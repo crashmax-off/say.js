@@ -11,7 +11,7 @@ class SayPlatformWin32 extends SayPlatformBase {
     this.baseSpeed = BASE_SPEED
   }
 
-  buildSpeakCommand ({ text, voice, speed, volume = 100 }) {
+  buildSpeakCommand ({ text, voice, speed, volume }) {
     let args = []
     let pipedData = ''
     let options = {}
