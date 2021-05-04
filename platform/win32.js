@@ -11,7 +11,7 @@ class SayPlatformWin32 extends SayPlatformBase {
     this.baseSpeed = BASE_SPEED
   }
 
-  buildSpeakCommand ({ text, voice, speed }) {
+  buildSpeakCommand ({ text, voice, speed, volume = 100 }) {
     let args = []
     let pipedData = ''
     let options = {}
@@ -19,7 +19,7 @@ class SayPlatformWin32 extends SayPlatformBase {
     let psCommand = `Add-Type -AssemblyName System.speech;$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer;`
 
     if (voice) {
-      psCommand += `$speak.SelectVoice('${voice}');`
+      psCommand += `$speak.SelectVoice('${voice}'); $speak.Volume = ${volume};`
     }
 
     if (speed) {
